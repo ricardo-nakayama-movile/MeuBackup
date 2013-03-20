@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/button_sign_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button_sign"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:background="@drawable/btn_restore" />
+
+        <TextView
+            android:id="@+id/text_button_sign"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="@string/text_button_sign"
+            android:textColor="#000000" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/button_contact_us_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_sign_frame" >
+
+        <Button
+            android:id="@+id/button_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:background="@drawable/btn_restore" />
+
+        <TextView
+            android:id="@+id/text_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="@string/text_contact_us"
+            android:textColor="#000000" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/button_remove_bookmarks_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_contact_us_frame" >
+
+        <Button
+            android:id="@+id/button_remove_bookmarks"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:background="@drawable/btn_restore" />
+
+        <TextView
+            android:id="@+id/text_button_remove_bookmarks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="@string/text_button_remove_bookmarks"
+            android:textColor="#000000" />
+    </FrameLayout>
+
+</RelativeLayout>

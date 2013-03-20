@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adapterLayoutSelect"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="30dp" >
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/adapterMoviePicture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@drawable/epi_place_holder"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/adapterMoviePlay"
+            android:layout_width="64dp"
+            android:layout_height="61dp"
+            android:layout_gravity="center" >
+        </ImageView>
+
+        <ProgressBar
+            android:id="@+id/downloadProgressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="120dp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:background="@drawable/bg_frame_video" >
+
+        <TextView
+            android:id="@+id/adapterMovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="17dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="78dp"
+            android:layout_marginTop="13dp"
+            android:gravity="left"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/adapterMovieBookmark"
+        android:layout_width="56dp"
+        android:layout_height="76dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="3dp" >
+    </Button>
+
+</RelativeLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_background"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/background_header"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/background_header" >
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="52dp"
+            android:layout_height="38dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/btn_back"
+            android:paddingBottom="4dp"
+            android:paddingLeft="5dp"
+            android:text="@string/text_back_button"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/background_logo_header"
+            android:layout_width="188dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:background="@drawable/favoritos_header"
+            android:contentDescription="@string/bookmarks_header_description" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/background_header_shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/background_header"
+        android:background="@drawable/background_header_shadow" />
+
+    <FrameLayout
+        android:id="@+id/notificationBookmarkFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/background_header_shadow"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <ListView
+        android:id="@+id/list_bookmarks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/background_header_shadow"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:dividerHeight="-1dp" >
+    </ListView>
+
+</RelativeLayout>

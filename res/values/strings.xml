@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Canal Kids Beta</string>
+    <string name="menu_settings">Settings</string>
+    <string name="loading">Carregando: 0%</string>
+    <string name="test">Teste</string>
+    <string name="list_header_description">Main header logo</string>
+    <string name="bookmarks_header_description">Bookmarks header logo</string>
+    <string name="settings_header_description">Settings header logo</string>
+    <string name="text_button_sign">Assinar</string>
+    <string name="text_button_remove_bookmarks">Apagar conteúdos locais</string>
+    <string name="text_back_button">Voltar</string>
+    <string name="text_button_restore_sign">Restaurar Assinaturas</string>
+    <string name="text_contact_us">Fale Conosco</string>
+    <string name="notification_list">Marque os vídeos preferidos de seus filhos clicando na * ao lado de cada vídeo. Os vídeos favoritos são automaticamente salvos no seu aparelho, e vocês podem assistí-los mesmo sem internet.</string>
+    <string name="notification_bookmark">Você ainda não marcou nenhum vídeo como favorito.\n\nMarque os vídeos preferidos de seus filhos clicando na ao lado de cada vídeo.\n\nOs vídeos favoritos são automaticamente salvos no seu aparelho, e vocês podem assistí-los mesmo sem internet (no avião, no carro, em qualquer lugar).\n\nAlém disto, os vídeos favoritos podem ser tocados em sequência, garantindo muito mais tempo de diversão!</string>
+    <string name="notification_offline">Não há conexão com a internet portanto somente os vídeos favoritos estão disponíveis.\n\nConecte-se para assistir e favoritar novos vídeos.</string>
+    
+</resources>

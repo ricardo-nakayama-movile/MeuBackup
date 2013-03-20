@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_activity_header"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_background"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/background_header"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/background_header" >
+
+        <Button
+            android:id="@+id/bookmarks_button"
+            android:layout_width="32dp"
+            android:layout_height="43dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-1dp"
+            android:background="@drawable/icn_favorites" />
+
+        <ImageView
+            android:id="@+id/background_logo_header"
+            android:layout_width="188dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:background="@drawable/logo_header"
+            android:contentDescription="@string/list_header_description" />
+
+        <Button
+            android:id="@+id/settings_button"
+            android:layout_width="32dp"
+            android:layout_height="38dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/icn_settings" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/background_header_shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/background_header"
+        android:background="@drawable/background_header_shadow" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/background_header_shadow" />
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_notification"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/notificationFragmentText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="25dp"
+        android:paddingBottom="7dp"
+        android:paddingTop="3dp"
+        android:text="@string/notification_list"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/closeNotificationList"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/icn_close" />
+
+</RelativeLayout>
