@@ -12,11 +12,14 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.betatest.canalkidsbeta.R;
-import com.betatest.canalkidsbeta.activities.SettingsActivity;
 import com.betatest.canalkidsbeta.billing.util.IabHelper;
 import com.betatest.canalkidsbeta.controllers.SubscriptionController;
 import com.betatest.canalkidsbeta.dao.SharedPreferencesDAO;
 import com.betatest.canalkidsbeta.vo.ChannelContentsResponseParcel;
+
+//TODO NEED TO SET TO VERTICAL AFTER VIDEO PLAYING OR BACK BUTTON IN VIDEO
+//TODO NEED TO CREATE BUTTON TO CHANGE VIEWS
+//TODO NEED TO REFRESH NEXT FRAGMENT
 
 public class ViewPagerExample extends FragmentActivity {
 	private MyAdapter mAdapter;
@@ -33,35 +36,35 @@ public class ViewPagerExample extends FragmentActivity {
 	private String publicKey;
 	public static String subscription;
 
-	public static ChannelContentsResponseParcel channelContentsResponseParcel; 
-	
+	public static ChannelContentsResponseParcel channelContentsResponseParcel;
+
 	/** Called when the activity is first created. */
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        mAdapter = new MyAdapter(getSupportFragmentManager());
- 
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mPager.setAdapter(mAdapter);
-        mPager.setCurrentItem(1);
-        
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		mAdapter = new MyAdapter(getSupportFragmentManager());
+
+		mPager = (ViewPager) findViewById(R.id.pager);
+		mPager.setAdapter(mAdapter);
+		mPager.setCurrentItem(1);
+
 		context = this;
 		activity = this;
-        
+
 		SharedPreferencesDAO sharedPreferencesDAO = new SharedPreferencesDAO();
-		
+
 		// Need to verify if user is already subscribed, to allow/not allow the
 		// subs
 		SubscriptionController subscriptionController = new SubscriptionController();
-        publicKey = subscriptionController.getBase64EncodedPublicKey();
+		publicKey = subscriptionController.getBase64EncodedPublicKey();
 		mHelper = new IabHelper(context, publicKey);
 		subscriptionController.initSubscription(context, activity, mHelper);
-		
+
 		subscription = sharedPreferencesDAO.read(context, "subscription");
 		channelContentsResponseParcel = getIntent().getExtras().getParcelable(
 				"movies");
-    }
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -90,19 +93,22 @@ public class ViewPagerExample extends FragmentActivity {
 		}
 
 		@Override
-        public Fragment getItem(int position) {
-            switch (position) {
-            case 0:
-                return new DetailFragmentExample();
-            case 1:
-                return new ListFragmentExample().newInstance(subscription,channelContentsResponseParcel);
-            case 2:
-                return new SettingsFragmentExample().newInstance(subscription);
+		public Fragment getItem(int position) {
+			switch (position) {
+			case 0:
+				// return new
+				// BookmarkFragmentExample().newInstance(subscription,channelContentsResponseParcel);
+				return new DetailFragmentExample();
+			case 1:
+				return new ListFragmentExample().newInstance(subscription,
+						channelContentsResponseParcel);
+			case 2:
+				return new SettingsFragmentExample().newInstance(subscription);
 
-            default:
-                return null;
-            }
-        }
+			default:
+				return null;
+			}
+		}
 	}
 
 	// We're being destroyed. It's important to dispose of the helper here!

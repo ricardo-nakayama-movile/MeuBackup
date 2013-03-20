@@ -1,58 +1,72 @@
-package com.betatest.canalkidsbeta.activities;
+package com.betatest.canalkidsbeta.fragments;
 
 import java.util.List;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.VideoView;
 
 import com.betatest.canalkidsbeta.R;
+import com.betatest.canalkidsbeta.activities.VideoActivity;
 import com.betatest.canalkidsbeta.adapter.BookmarkAdapter;
-import com.betatest.canalkidsbeta.controllers.VideoController;
 import com.betatest.canalkidsbeta.dao.SharedPreferencesDAO;
-import com.betatest.canalkidsbeta.fragments.NotificationBookmarkFragment;
 import com.betatest.canalkidsbeta.vo.ChannelContentsResponseParcel;
 import com.betatest.canalkidsbeta.vo.Movie;
 
-public class BookmarksActivity extends FragmentActivity {
+public class BookmarkFragmentExample extends Fragment {
 
-	private Context context;
-	private Button backButton;
 	private ListView listComplex;
 	private ChannelContentsResponseParcel channelContentsResponseParcel;
 	private List<Movie> movies;
 	private VideoView videoView;
 
-	private static final String TAG = BookmarksActivity.class.getSimpleName();
-	
-	// TODO THE SHADOW OF THE MAIN BAR IS NOT TRANSPARENT FIX IT!
+	private static final String TAG = BookmarkFragmentExample.class
+			.getSimpleName();
+
+	public BookmarkFragmentExample newInstance(String subs,
+			ChannelContentsResponseParcel channelContentsResponse) {
+		BookmarkFragmentExample f = new BookmarkFragmentExample();
+		Bundle args = new Bundle();
+		args.putString("subscription", subs);
+		args.putParcelable("movies", channelContentsResponse);
+		f.setArguments(args);
+		return f;
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	}
 
-		setContentView(R.layout.activity_bookmarks);
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 
-		context = this;
+	}
 
-		// create bookmarks list
-		listComplex = (ListView) findViewById(R.id.list_bookmarks);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.activity_bookmarks, container,
+				false);
 
 		// get movies from listActivity
-		channelContentsResponseParcel = getIntent().getExtras().getParcelable(
+		channelContentsResponseParcel = getArguments().getParcelable(
 				"movies");
 		movies = Movie.getMoviesList(channelContentsResponseParcel);
 
 		// adapter will get only the movies that are bookmarked
-		BookmarkAdapter adapter = new BookmarkAdapter(movies, this);
+		BookmarkAdapter adapter = new BookmarkAdapter(movies, getActivity());
 
 		// if theres none bookmarked movie, the adapter will have a null movie
 		// list
@@ -72,13 +86,17 @@ public class BookmarksActivity extends FragmentActivity {
 					SharedPreferencesDAO sharedPreferencesDAO = new SharedPreferencesDAO();
 					Movie movie = movies.get(arg2);
 
-					if (sharedPreferencesDAO.read(context, "subscription") == "userNo"
+					if (sharedPreferencesDAO.read(getActivity(), "subscription") == "userNo"
 							|| movie.accountType.equals("free")) {
-						VideoController videoController = new VideoController();
+						
+						// TODO LAYOUT SET, BUT NO CONNECTION... BLACK SCREEN OF
+						// DEATH!
+						Intent intent = new Intent(getActivity(),
+								VideoActivity.class);
+						intent.putExtra("movieTag", movie.tag);
+						intent.putExtra("movieUrl", movie.urlMovie);
+						startActivity(intent);
 
-						setContentView(R.layout.videolayout);
-						videoView = (VideoView) findViewById(R.id.playvideo);
-						videoController.loadVideo(context, movie.tag, movie.urlMovie, videoView);
 					} else {
 						// TODO CALL SUBSCRIPTION HERE
 						Log.d(TAG, "No subscription");
@@ -88,7 +106,7 @@ public class BookmarksActivity extends FragmentActivity {
 		} else {
 			// insert fragment dynamically
 			if (savedInstanceState == null) {
-				FragmentManager fragmentManager = getSupportFragmentManager();
+				FragmentManager fragmentManager = getFragmentManager();
 				FragmentTransaction fragmentTransaction = fragmentManager
 						.beginTransaction();
 				NotificationBookmarkFragment fragment = new NotificationBookmarkFragment();
@@ -97,19 +115,7 @@ public class BookmarksActivity extends FragmentActivity {
 				fragmentTransaction.commit();
 			}
 		}
-		// overriding back phone's back button, it will take to last activity
-		backButton = (Button) findViewById(R.id.back_button);
-		backButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				onBackPressed();
-			}
-		});
-	}
-
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
+		
+		return view;
 	}
 }

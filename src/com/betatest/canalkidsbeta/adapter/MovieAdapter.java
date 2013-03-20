@@ -176,6 +176,7 @@ public class MovieAdapter extends BaseAdapter {
 						ConnectionStatus connectionStatus = new ConnectionStatus();
 						if (connectionStatus.checkConnectivity(context)) {
 
+							//TODO CORRECT ANIMATION BLINK
 							Button bookmarksButton = (Button) activity
 									.findViewById(R.id.bookmarks_button);
 							BitmapDrawable background = (BitmapDrawable) bookmarksButton

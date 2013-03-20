@@ -29,8 +29,6 @@ public class ListFragmentExample extends Fragment {
 	private List<Movie> movies;
 	private Button subscriptionButton;
 
-	private Button settingsButton;
-	private Button bookmarksButton;
 	private MovieAdapter adapter;
 
 	private static final String TAG = ListFragmentExample.class.getSimpleName();
@@ -109,6 +107,7 @@ public class ListFragmentExample extends Fragment {
 
 					} else {
 						Log.d(TAG, "No subscription, calling play store");
+						//TODO CALL SUBSCRIPTION
 						// subscriptionController.buySubscription(context,
 						// activity, arg1, mHelper);
 					}

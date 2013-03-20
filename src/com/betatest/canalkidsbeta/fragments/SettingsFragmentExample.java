@@ -5,7 +5,6 @@ import java.util.HashMap;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import com.betatest.canalkidsbeta.R;
 import com.betatest.canalkidsbeta.controllers.BookmarksController;
 import com.betatest.canalkidsbeta.dao.InternalStorageDAO;
-import com.betatest.canalkidsbeta.dao.SharedPreferencesDAO;
 
 public class SettingsFragmentExample extends Fragment {
 
@@ -50,11 +48,6 @@ public class SettingsFragmentExample extends Fragment {
 
 		View view = inflater.inflate(R.layout.activity_settings, container,
 				false);
-
-		// Back button in action bar need to do the same as phone back button
-		backButton = (Button) view.findViewById(R.id.back_button);
-
-		// TODO AND THE BACK BUTTON?
 
 		// Need to hide the button 'assinar' in case user already have subs
 		View buttonSignFrame = view.findViewById(R.id.button_sign_frame);
